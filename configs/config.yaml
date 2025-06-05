@@ -1,0 +1,38 @@
+dataset:
+  train_path: "/DATA/Tawheed/emotion_data/images//train"
+  val_path: "/DATA/Tawheed/emotion_data/images/test"
+  test_path: "/mnt/hdd/home/tawheed/Documents/Programming/Emotion Detector/Face_Emotion_detection/DATASET/test"
+  # class_names: ["Neutral", "Happy", "Sad", "Surprise", "Fear", "Disgust", "Angry"]
+  class_names: ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
+
+training:
+  batch_size: 64
+  num_classes: 7
+  epochs: 50
+  learning_rate: 0.0001
+  image_size: 224
+  grayscale: true
+  checkpoint_pattern: epoch={epoch}-val_acc={val_accuracy}-val_loss={val_loss}.pth
+  pretrained: true
+
+scheduler:
+  use_scheduler: true
+  mode: "min"
+  factor: 0.2
+  patience: 5
+
+early_stopping:
+  use_early_stopping: true
+  patience: 10
+
+model:
+  name: "resnet50"
+  num_classes: 7
+
+test:
+  # ckpt: "/mnt/hdd/home/tawheed/Documents/Programming/Emotion Detector/AffectSense/server/output/2025-04-15_08-20-43/checkpoints/epoch=11-val_acc=62.13429924770131-val_loss=1.030141839938881.pth"
+  ckpt : "/mnt/hdd/home/tawheed/Documents/Programming/Emotion Detector/Face_Emotion_detection/checkpoints/FER_tunned_82.pth"
+  img_dir: "/mnt/hdd/home/tawheed/Documents/Programming/Emotion Detector/Face_Emotion_detection/DATASET/test/1"
+  output_dir: "/mnt/hdd/home/tawheed/Documents/Programming/Emotion Detector/Face_Emotion_detection/output"
+
+ckpt_path: null
